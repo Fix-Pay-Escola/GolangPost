@@ -44,7 +44,9 @@ func Index(w http.ResponseWriter,r *http.Request){
 	http.Redirect(w,r,"/",301)
  }
  func Edit(w http.ResponseWriter,r *http.Request){
-	temp.ExecuteTemplate(w,"Edit",nil)
+	idDoProduto := r.URL.Query().Get("id")
+	produto := models.EditaProduto(idDoProduto)
+	temp.ExecuteTemplate(w,"Edit",produto)
  }
 
 
